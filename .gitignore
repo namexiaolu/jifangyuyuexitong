@@ -1,0 +1,5 @@
+Debug/
+*.user
+*.swp
+*.vcxproj
+*.vcxproj.filters

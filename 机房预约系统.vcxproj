@@ -129,6 +129,7 @@
     <ClCompile Include="manager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="globalFile.h" />
     <ClInclude Include="identity.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="student.h" />

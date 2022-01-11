@@ -4,6 +4,7 @@ using namespace std;
 #include <fstream>
 #include <string>
 #include "identity.h"
+#include "globalFile.h"
 
 
 //登录功能 
@@ -16,7 +17,7 @@ void LoginIn(string fileName, int type)
 	ifstream ifs;
 	ifs.open(fileName, ios::in);
 
-	if (!fs.is_open())
+	if (!ifs.is_open())
 	{
 		cout << "文件不存在"<< endl;
 		ifs.close();
@@ -24,9 +25,38 @@ void LoginIn(string fileName, int type)
 	}
 
 	//准备接收用户的信息
+	int id = 0;
+	string name;
+	string pwd;
+	if (type == 1)
+	{
+		cout << "请输入你的学号" << endl;
+		cin >> id;
+	}
+	if (type == 2)
+	{
+		cout << "请输入你的职工号" << endl;
+		cin >> id;
+	}
+	cout << "请输入账号" << endl;
+	cin >> name;
 
+	cout << "请输入密码" << endl;
+	cin >> pwd;
 
-
+	if (type == 1)
+	{
+	}
+	else if (type == 2)
+	{
+	}
+	else if (type == 3)
+	{
+	}
+	cout << "验证等陆失败" << endl;
+	system("pause");
+	system("cls");
+	return;
 }
 
 int main()
@@ -56,13 +86,16 @@ int main()
 		switch (select)
 		{
 		case 1:  //学生身份
+			LoginIn(STUDENT_FILE,1);
 			break;
 		case 2:  //老师身份
+			LoginIn(TEACHER_FILE, 2);
 			break;
 		case 3:  //管理员身份
+			LoginIn(ADMIN_FILE, 3);
 			break;
 		case 0:  //退出系统
-			cout << "输出的是啥";
+			cout << "输出的是啥"<<endl;
 			return 0;
 			break;
 

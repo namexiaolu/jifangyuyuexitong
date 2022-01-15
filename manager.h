@@ -2,6 +2,9 @@
 #include <iostream>
 using namespace std;
 #include "identity.h"
+#include <string>
+#include "globalFile.h"
+#include <fstream>
 
 class Manager:public Identity
 {

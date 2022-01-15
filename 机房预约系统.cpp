@@ -5,12 +5,60 @@ using namespace std;
 #include <string>
 #include "identity.h"
 #include "globalFile.h"
+#include "student.h"
+#include "teacher.h"
+#include "manager.h"
 
+//进入管理员子菜单界面
+void managerMenu(Identity * &manager)
+{
+	while (true)
+	{
+		//调用父类
+		manager->operMenu();
+		//将父类指针转为子类指针，调用子类里的其他接口
+		Manager * man = (Manager *)manager;
+		int select = 0;
+		cin >> select;
+		switch (select)
+		{
+		case 1:
+			cout << "这是1增加人员";
+			man->addPerson();
+			
+			break;
+		case 2:
+			cout << "这个是2查看用户";
+			man->showComputer();
+			break;
+		case 3:
+			cout << "这个是3查看机房";
+			man->showComputer();
+
+			break;
+		case 4:
+			cout << "这个是4清空预约";
+			man->cleanFile();
+			break;
+		case 5:
+			cout << "这个是5";
+			break;
+		default:
+			delete manager;
+			cout << "注销成功";
+			system("cls");
+			return;
+			
+		}
+	
+	}
+	
+}
 
 //登录功能 
 void LoginIn(string fileName, int type)
 {
-	//父类指针，用于指向子类对象
+	//父类指针，用于指向子类对象0620
 	Identity *person = NULL;
 
 	//读文件
@@ -46,12 +94,63 @@ void LoginIn(string fileName, int type)
 
 	if (type == 1)
 	{
+		int fId;
+		string fName;
+		string fPwd;
+		while (ifs >> fId && ifs>>fName && ifs >> fPwd)
+		{
+			cout << fId << fName << fPwd;
+			if (fId == id && fName == name && fPwd == pwd)
+			{
+				cout << "学生验证登录成功，";
+				person = new Student(id, name, pwd);
+				system("pause");
+				system("cls");
+				return;
+			}
+		}
 	}
 	else if (type == 2)
 	{
+		int fId;
+		string fName;
+		string fPwd;
+		while (ifs >> fId && ifs >> fName && ifs >> fPwd)
+		{
+			cout << fId << fName << fPwd;
+			if (fId == id && fName == name && fPwd == pwd)
+			{
+				cout << "老师验证登录成功，";
+				person = new Teacher(id, name, pwd);
+				system("pause");
+				system("cls");
+				return;
+			}
+		}
+
 	}
 	else if (type == 3)
 	{
+	
+		string fName;
+		string fPwd;
+		while ( ifs >> fName && ifs >> fPwd)
+		{
+			cout << fName << fPwd;
+			if ( fName == name && fPwd == pwd)
+			{
+				cout << "管理员验证登录成功，";
+	
+				system("pause");
+				system("cls");
+				person = new Manager(name, pwd);
+
+				//进入管理员子菜单
+				managerMenu(person);
+				return;
+			}
+		}
+
 	}
 	cout << "验证等陆失败" << endl;
 	system("pause");

@@ -5,6 +5,9 @@ using namespace std;
 #include <string>
 #include "globalFile.h"
 #include <fstream>
+#include <vector>
+#include "student.h"
+#include "teacher.h"
 
 class Manager:public Identity
 {
@@ -18,6 +21,17 @@ public:
 	void showComputer();
 	//清空预约记录
 	void cleanFile();
+
+	//初始化容器。为了给去重做准别
+	void initVector();
+
+	//学生容器
+	vector<Student> vStu;
+
+	vector<Teacher> vTea;
+
+	//检测重复
+	bool checkRepeat(int id,int type);
 
 };
 

@@ -11,6 +11,15 @@ Manager::Manager(string name, string pwd)
 
 	//初始化容器
 	this->initVector();
+	//初始化机房信息
+	ifstream ifs;
+	ifs.open(COMPUTER_FILE, ios::in);
+	ComputerRoom com;
+	while (ifs>>com.m_comId && ifs>>com.m_maxNum)
+	{
+		vCom.push_back(com);
+	}
+	ifs.close();
 }
 
 void Manager::operMenu()
@@ -103,17 +112,49 @@ void Manager::addPerson()
 	ofs.close();
 	this->initVector();
 }
+void printStudent(Student &s)
+{
+	cout << "学号" << s.m_Id <<"姓名"<< s.m_Name<<"密码" << s.m_Pwd<<endl;
+}
+void printTeacher(Teacher &t)
+{
+	cout << "学号" << t.m_EmpId << t.m_Name << t.m_Pwd << endl;
+}
+
 
 void Manager::showPerson()
 {
+	cout << "1.查看学生，2、查看老师" << endl;
+	int select = 0;
+	cin >> select;
+	if (select == 1)
+	{
+		for_each(vStu.begin(),vStu.end(),printStudent);
+	}
+		
+	else
+	{
+		for_each(vTea.begin(), vTea.end(), printTeacher);
+	}
+
 }
 
 void Manager::showComputer()
 {
+	cout << "查看机房信息" << endl;
+	for (vector<ComputerRoom>::iterator it = vCom.begin(); it != vCom.end(); ++it)
+		cout << "机房编号" << it->m_comId << "个数" << it->m_maxNum;
+	system("pause");
+	system("cls");
 }
 
 void Manager::cleanFile()
 {
+	ofstream ofs(ORDER_FILE, ios::trunc);
+	ofs.close();
+	cout << "清空成功";
+	system("pause");
+	system("cls");
 }
 
 

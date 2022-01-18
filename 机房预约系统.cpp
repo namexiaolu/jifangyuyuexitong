@@ -29,7 +29,7 @@ void managerMenu(Identity * &manager)
 			break;
 		case 2:
 			cout << "这个是2查看用户";
-			man->showComputer();
+			man->showPerson();
 			break;
 		case 3:
 			cout << "这个是3查看机房";

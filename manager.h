@@ -8,6 +8,8 @@ using namespace std;
 #include <vector>
 #include "student.h"
 #include "teacher.h"
+#include "computerRoom.h"
+#include <algorithm>
 
 class Manager:public Identity
 {
@@ -29,6 +31,8 @@ public:
 	vector<Student> vStu;
 
 	vector<Teacher> vTea;
+
+	vector<ComputerRoom> vCom;
 
 	//ºÏ≤‚÷ÿ∏¥
 	bool checkRepeat(int id,int type);

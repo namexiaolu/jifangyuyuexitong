@@ -2,6 +2,12 @@
 #include <iostream>
 using namespace std;
 #include "Identity.h"
+#include <string>
+#include <vector>
+#include "computerRoom.h"
+#include  "globalFile.h"
+#include <fstream>
+
 class Student : public Identity
 {
 public:
@@ -24,6 +30,8 @@ public:
 	void cancelOrder();
 	//Ñ§ÉúÑ§ºÅ
 	int m_Id;
+
+	vector<ComputerRoom> vCom;
 
 };
 

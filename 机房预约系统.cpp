@@ -9,6 +9,40 @@ using namespace std;
 #include "teacher.h"
 #include "manager.h"
 
+//进入学生管理的子菜单界面
+void studentMenu(Identity * &student) {
+	while (true)
+	{
+		//显示提示
+		student->operMenu();
+
+		Student *stu = (Student*)student;
+		int select = 0;
+		cin >> select;
+		if (select == 1) {
+			stu->applyOrder();
+		}
+		else if (select == 2)
+		{
+			stu->cancelOrder();
+
+		}
+		else if (select == 3)
+			stu->showAllOrder();
+		else if (select == 4)
+			stu->cancelOrder();
+		else
+		{
+			delete student;
+			cout << "注销成功" << endl;
+			system("pause");
+			system("cls");
+			return;
+		}
+
+	}
+}
+
 //进入管理员子菜单界面
 void managerMenu(Identity * &manager)
 {
@@ -104,6 +138,7 @@ void LoginIn(string fileName, int type)
 			{
 				cout << "学生验证登录成功，";
 				person = new Student(id, name, pwd);
+				studentMenu(person);
 				system("pause");
 				system("cls");
 				return;

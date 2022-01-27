@@ -24,7 +24,7 @@ void studentMenu(Identity * &student) {
 		}
 		else if (select == 2)
 		{
-			stu->cancelOrder();
+			stu->showMyOrder();
 
 		}
 		else if (select == 3)

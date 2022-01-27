@@ -7,6 +7,7 @@ using namespace std;
 #include "computerRoom.h"
 #include  "globalFile.h"
 #include <fstream>
+#include "orderFile.h"
 
 class Student : public Identity
 {

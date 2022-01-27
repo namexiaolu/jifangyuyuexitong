@@ -106,8 +106,47 @@ void Student::applyOrder()
 }
 
 //查看预约
-void Student::showMyOrder() 
+void Student::showMyOrder()
 {
+	cout << "这个是查看预约";
+	OrderFile of;
+	if (of.m_size == 0)
+	{
+		cout << "没有预约" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+	for (int i = 0; i < of.m_size; ++i)
+	{
+		if (this->m_Id == atoi(of.m_orderData[i]["stuId"].c_str()))
+		{
+			cout << "找到和自己一样的了";
+			cout << "预约日期： 周" << of.m_orderData[i]["date"];
+			cout << " 时段：" << (of.m_orderData[i]["interval"] == "1" ? "上午" : "下午");
+			cout << " 机房：" << of.m_orderData[i]["roomId"];
+			string status = " 状态： ";  // 0 取消的预约   1 审核中   2 已预约 -1 预约失败
+			if (of.m_orderData[i]["status"] == "1")
+			{
+				status += "审核中";
+			}
+			else if (of.m_orderData[i]["status"] == "2")
+			{
+				status += "预约成功";
+			}
+			else if (of.m_orderData[i]["status"] == "-1")
+			{
+				status += "审核未通过，预约失败";
+			}
+			else
+			{
+				status += "预约已取消";
+			}
+			cout << status << endl;
+		}
+	}
+	system("pause");
+	system("cls");
 }
 
 void Student::showAllOrder()

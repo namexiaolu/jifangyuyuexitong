@@ -2,7 +2,6 @@
 
 OrderFile::OrderFile()
 {
-	cout << "进来构造函数了么";
 	ifstream ifs;
 	ifs.open(ORDER_FILE,ios::in);
 
@@ -17,12 +16,12 @@ OrderFile::OrderFile()
 	while (ifs >> date && ifs >> interval && ifs >> stuId && ifs >>stuName && ifs >> roomId && ifs >> status)
 	{
 		//测试代码
-		cout << date << endl;
-		cout << interval << endl;
-		cout << stuId << endl;
-		cout << stuName << endl;
-		cout << roomId << endl;
-		cout << status << endl;
+		//cout << date << endl;
+		//cout << interval << endl;
+		//cout << stuId << endl;
+		//cout << stuName << endl;
+		//cout << roomId << endl;
+		//cout << status << endl;
 
 		string key;
 		string value;
@@ -83,10 +82,10 @@ OrderFile::OrderFile()
 	ifs.close();
 	for (map<int, map<string, string>>::iterator it = m_orderData.begin(); it != m_orderData.end(); ++it)
 	{
-		cout <<"id是多少"<<it->first<<endl;
+		//cout <<"id是多少"<<it->first<<endl;
 		for (map<string, string>::iterator mit = (*it).second.begin(); mit != it->second.end(); ++mit)
 		{
-			cout << "内部的显示" << mit->first<<"   ------   "<<mit->second;
+			//cout << "内部的显示" << mit->first<<"   ------   "<<mit->second;
 		}
 	}
 }

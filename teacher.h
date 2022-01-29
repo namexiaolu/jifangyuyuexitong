@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 #include "identity.h"
+#include <string>
+#include "orderFile.h"
+#include <vector>
 using namespace std;
 class Teacher : public Identity
 {
